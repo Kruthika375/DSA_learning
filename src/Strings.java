@@ -228,5 +228,27 @@ public class Strings {
         return sum;
     }
 
+    public static String reverse(String str){
+        char[] arr=str.toCharArray();
+        int left=0;
+        int right= arr.length-1;
 
+        while(left<right){
+            if (!Character.isLetterOrDigit(arr[left])){
+                left++;
+            }
+
+            else if(!Character.isLetterOrDigit(arr[right])){
+                right--;
+            }
+            else{
+                char temp=arr[left];
+                arr[left]=arr[right];
+                arr[right]=temp;
+                left++;
+                right--;
+            }
+        }
+        return new String((arr));
+    }
 }
