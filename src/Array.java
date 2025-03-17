@@ -52,7 +52,7 @@ public class Array {
 //            }else {
 //                return false;
 //            }
-//        }
+//        }.l
 //        return true;
         boolean flag= true;
         for(int i=arr.length-1;i>0;i--){
@@ -691,5 +691,119 @@ public class Array {
         for (Map.Entry<Integer, Integer> entry : endEvent.entrySet()) {
             System.out.println(entry.getKey() + " took time " + entry.getValue());
         }
+    }
+
+    public static int[] selectionSort(int[] arr){
+        int n= arr.length;
+        for(int i=0; i<=n-2;i++){
+            int mini=i;
+            for(int j=i+1;j<=n-1;j++){
+                if(arr[j] < arr[mini]){
+                    mini=j;
+                }
+            }
+            int temp=arr[i];
+            arr[i]=arr[mini];
+            arr[mini]=temp;
+        }
+        return arr;
+    }
+
+    public static int[] bubbleSort(int[] arr){
+        int n= arr.length;
+        for(int i=n-1;i<=1;i--){
+            int didSwap=0;
+            for(int j=0;j<i;j++){
+                if(arr[j] > arr[j+1]){
+                    int temp=arr[j];
+                    arr[j]= arr[j+1];
+                    arr[j+1]= temp;
+
+                    didSwap++;
+                }
+            }
+            if(didSwap==0)
+                break;
+        }
+        return arr;
+    }
+
+    public static int[] insertionSort(int[] arr){
+        int n= arr.length;
+        for(int i=0;i<n;i++){
+            int j=i;
+            while (j>0 && arr[j]<arr[j-1]){
+                int temp=arr[j];
+                arr[j]=arr[j-1];
+                arr[j-1]=temp;
+            }
+        }
+        return arr;
+    }
+
+    public static void mergeSort(int[] arr, int low,int high){
+        if(low>=high) return ;
+        int mid= low+(high-low)/2;
+        mergeSort(arr, low, mid);
+        mergeSort(arr,mid+1, high);
+        merge(arr,low,mid,high);
+    }
+    public static void merge(int[] arr, int low, int mid, int high){
+        List<Integer> temp= new ArrayList<>();
+        int i= low;
+        int j=mid+1;
+        while(i<=mid && j<=high){
+            if(arr[i]<=arr[j]){
+                temp.add(arr[i]);
+                i++;
+            }else{
+                temp.add(arr[j]);
+                j++;
+            }
+        }
+
+        while(i<=mid){
+            temp.add(arr[i]);
+            i++;
+        }
+        while(j<=high){
+            temp.add((arr[j]));
+            j++;
+        }
+
+        for(int k=low;k<=high;k++){
+            arr[k]=temp.get(k-low);
+        }
+    }
+
+    //Quick Sort
+    public static void quickSort(int[] arr, int low, int high){
+        if(low<high){
+            int pIndex= partition(arr,low,high);
+            quickSort(arr, low, pIndex-1);
+            quickSort(arr, pIndex+1, high);
+        }
+    }
+    public static int partition(int[] arr, int low, int high){
+        int pivot= arr[low];
+        int i=low;
+        int j=high;
+        while(i<j){
+            while (arr[i]<=pivot && i<high){
+                i++;
+            }
+            while (arr[j]> pivot && j>low){
+                j--;
+            }
+            if(i<j){
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]= temp;
+            }
+        }
+        int temp= arr[j];
+        arr[j]=pivot;
+        pivot= temp;
+        return j;
     }
 }

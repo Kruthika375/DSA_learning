@@ -201,6 +201,40 @@ public class Main {
         //o/p : 1st function took time of 15 , 2nd function took time of 2
         List<String> list=List.of("1.start.0", "2.start.3", "2.end.5", "3.start.7", "3.end.10", "1.end.15");
         Array.eventTime(list);
-    }
 
+        //Selection Sort
+        int[] arr22= {13,46,24,52,20,9};
+        System.out.println(Arrays.toString(Array.selectionSort(arr22)));
+        //Bubble Sort
+        System.out.println(Arrays.toString(Array.bubbleSort(arr22)));
+        //Insertion Sort
+        System.out.println(Arrays.toString(Array.insertionSort(arr22)));
+
+        //Merge Sort
+        int[] arr23={9, 4, 7, 6, 3, 1, 5};
+        int n= arr23.length;
+        Array.mergeSort(arr23, 0, n-1);
+        System.out.println(Arrays.toString(arr23));
+
+        //Quick Sort
+        int[] arr24={4,1,7,9,3};
+        int len=arr24.length;
+        Array.quickSort(arr24, 0, len-1);
+        System.out.println(Arrays.toString(arr24));
+
+
+        //LinkedList
+        LL.insertFirst(12);
+        LL.insertLast(14);
+        LL.insertLast(16);
+        LL.insertFirst(10);
+        LL.insertLast(17);
+        LL.insert(13,2);
+//        System.out.println(LL.deleteFirst());
+//        System.out.println(LL.deleteLast());
+//        System.out.println(LL.delete(1));
+//        System.out.println(LL.find(13));
+        System.out.println(LL.middleNode());
+        LL.display();
+    }
 }

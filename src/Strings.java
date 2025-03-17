@@ -2,7 +2,21 @@ import java.util.*;
 
 public class Strings {
     public static String reverseString(String reverse){
-        return new StringBuilder(reverse).reverse().toString();   // time:O(n), space:O(n);
+        //return new StringBuilder(reverse).reverse().toString();// time:O(n), space:O(n);
+
+        //2 pointer approach  // time: O(n), space:O(1);
+        char[] str= reverse.toCharArray();
+        int left=0;
+        int right=reverse.length()-1;
+        while(left<right){
+            char temp= str[left];
+            str[left]=str[right];
+            str[right]=temp;
+
+            left++;
+            right--;
+        }
+        return new String(str);
     }
 
     public static boolean palindrome(String pal){
@@ -54,7 +68,6 @@ public class Strings {
 //            stringBuilder=stringBuilder.append(c);
 //        }
 //        return stringBuilder.toString();
-
         boolean[] array= new boolean[26];
         StringBuilder str= new StringBuilder();
         for (char c: string.toCharArray()){
